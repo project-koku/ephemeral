@@ -1,0 +1,26 @@
+# local koku repo
+KOKU_HOME=${KOKU_HOME}
+
+# docker registry to use
+QUAY_REPO=${QUAY_REPO}
+
+# choose podman(not fully tested) or docker
+CONTAINER_EXEC=docker
+HOST=local
+
+# path to file that holds login token for ephemeral cluster
+TOKEN_FILE=~/.eph_token
+
+# path to clowder config template file
+TEMPLATE_FILE=./config_yaml.template
+
+# path the koku dev clowder config
+CONFIG_FILE=${KOKU_HOME}/dev/config.yaml
+
+# image for Hive
+HIVE_IMAGE_TAG=3.1.2-metastore-005
+
+# local port(s) to forward
+SOURCES_FWD_PORT=3000
+KOKU_FWD_PORT=4000
+MASU_FWD_PORT=5042
