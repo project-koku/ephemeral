@@ -9,28 +9,29 @@ A wrapper to bonfire to run local repository on ephemeral cluster
 1. log into VPN
 2. clone [this(ephemeral)](https://github.com/project-koku/ephemeral) repository
 3. clone ([koku](https://github.com/project-koku/koku) repository if not already)
-4. Add ephemeral to your path
+4. Get config_yaml.template (see koku administrator)
+5. Add ephemeral to your path
      ```
      export PATH=$PATH:~/github/ephemeral
      ```
-5. Set the required environment variables. (examples below)
+6. Set the required environment variables. (examples below)
    ```
    export KOKU_HOME=~/github/koku
    export QUAY_REPO=quay.io/testuser/koku
    export AWS_ACCESS_KEY_ID_EPH="[YOUR AWS ACCESS KEY]"
    export AWS_SECRET_ACCESS_KEY_EPH="[YOUR SECRET ACCESS KEY]"
      ```
-6. Go to koku project directory
+7. Go to koku project directory
     ```
     cd ${KOKU_HOME}
     pipenv install --dev
     pipenv shell "pre-commit install
     ```
-7. install Bonfire
+8. install Bonfire
    ```
    pip install crc-bonfire
     ```
-8. Get and save your auth token.
+9. Get and save your auth token.
     [HERE](https://oauth-openshift.apps.c-rh-c-eph.8p0c.p1.openshiftapps.com/oauth/token/display)
    1. Save it to the following location(using your favorite editor or just echo it)
     ```
