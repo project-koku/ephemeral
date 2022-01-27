@@ -31,7 +31,7 @@ A wrapper to bonfire to run local repository on ephemeral cluster
    ```
    pip install crc-bonfire
     ```
-9. Get and save your auth token.
+9. Get your auth token.
     [HERE](https://oauth-openshift.apps.c-rh-c-eph.8p0c.p1.openshiftapps.com/oauth/token/display)
    1. Save it to the following location(using your favorite editor or just echo it)
     ```
