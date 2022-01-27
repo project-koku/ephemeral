@@ -19,6 +19,7 @@ usage() {
     log-info "\t help                   show usage"
     log-info "\t list                   list ephemeral namespace"
     log-info "\t login                  login into ephemeral cluster"
+    log-info "\t pods                   list all pods in your namespace"
     log-info "\t port-forward-koku      forward local port<3000> to koko pod"
     log-info "\t port-forward-masu      forward local port<4000> to masu pod"
     log-info "\t port-forward-services  forward local port<5000> to services pod"
@@ -115,6 +116,11 @@ list() {
     bonfire namespace list
 }
 
+pods() {
+    log-info "oc get pods"
+    oc get pods
+}
+
 build-image() {
     local _version=$(git rev-parse --short=7 HEAD)
 
@@ -175,6 +181,7 @@ case ${CMD} in
    "help") usage;;
    "list") list;;
    "login")login;;
+   "pods")pods;;
    "port-forward-koku") port-forward-koku;;
    "port-forward-masu") port-forward-masu;;
    "port-forward-services") port-forward-services;;

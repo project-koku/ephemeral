@@ -54,7 +54,7 @@ A wrapper to bonfire to run local repository on ephemeral cluster
    ```
 4. You can view the pods using oc command (at this point you will only see pods that ephemeral infrastructure setup)
     ```
-   oc get pods
+   ephemeral pods
    ```
    
 ### Building and Deploying an image
@@ -68,7 +68,7 @@ A wrapper to bonfire to run local repository on ephemeral cluster
    ```
 3. watch as pods come spin up(at this point you should start seeing koku specific pods, similar to running locally)
     ```
-   oc get pods
+   ephemeral pods
    ```
 ### Using port forwarding
 1. port forward Koku
