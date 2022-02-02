@@ -11,9 +11,6 @@ HOST=local
 # path to file that holds login token for ephemeral cluster
 TOKEN_FILE=~/.eph_token
 
-# path to clowder config template file
-TEMPLATE_FILE=./config_yaml.template
-
 # path the koku dev clowder config
 CONFIG_FILE=${KOKU_HOME}/dev/config.yaml
 
