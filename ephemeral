@@ -23,11 +23,11 @@ usage() {
     log-info "\t list                   list ephemeral namespace"
     log-info "\t login                  login into ephemeral cluster"
     log-info "\t pods                   list all pods in your namespace"
-    log-info "\t port-forward-koku      forward local port<3000> to koko pod"
-    log-info "\t port-forward-masu      forward local port<4000> to masu pod"
-    log-info "\t port-forward-services  forward local port<5000> to services pod"
+    log-info "\t port-forward-koku      forward local port<4000> to Koko pod"
+    log-info "\t port-forward-masu      forward local port<5042> to Masu pod"
+    log-info "\t port-forward-services  forward local port<3000> to Services pod"
     log-info "\t release                release currently reserved(default), or specify the namespace to release"
-    log-info "\t reserve <hours>        reserve an ephemeral namspace for specified time (example: 48h)"
+    log-info "\t reserve <hours>        reserve an ephemeral namespace for specified time (example: 48h)"
 }
 
 help() {
@@ -168,8 +168,8 @@ port-forward-koku() {
 }
 
 port-forward-masu() {
-    log-info "oc port-forward service/koku-clowder-masu $MASU_FWD_PORT:8000"
-    oc port-forward service/koku-clowder-masu $MASU_FWD_PORT:8000
+    log-info "oc port-forward service/koku-clowder-masu $MASU_FWD_PORT:10000"
+    oc port-forward service/koku-clowder-masu $MASU_FWD_PORT:10000
 }
 
 #
