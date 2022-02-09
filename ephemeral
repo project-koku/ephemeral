@@ -23,9 +23,10 @@ usage() {
     log-info "\t list                   list ephemeral namespace"
     log-info "\t login                  login into ephemeral cluster"
     log-info "\t pods                   list all pods in your namespace"
-    log-info "\t port-forward-koku      forward local port<4000> to Koko pod"
-    log-info "\t port-forward-masu      forward local port<5042> to Masu pod"
-    log-info "\t port-forward-services  forward local port<3000> to Services pod"
+    log-info "\t port-forward-koku      forward local port<4000> to Koko svc"
+    log-info "\t port-forward-masu      forward local port<5042> to Masu svc"
+    log-info "\t port-forward-sources  forward local port<3000> to Sources svc"
+    log-info "\t port-forward-ingress  forward local port<8000> to Ingress svc"
     log-info "\t release                release currently reserved(default), or specify the namespace to release"
     log-info "\t reserve <hours>        reserve an ephemeral namespace for specified time (example: 48h)"
 }
@@ -157,19 +158,29 @@ deploy-image() {
   --namespace ${NAMESPACE} | oc apply -f - -n ${NAMESPACE}
 }
 
-port-forward-services() {
-    log-info "oc port-forward service/sources-api-svc $SOURCES_FWD_PORT:8000"
-    oc port-forward service/sources-api-svc $SOURCES_FWD_PORT:8000
+port-forward() {
+  local _service_name=${1}
+  local _local_port=${2}
+  local _service_port=${3}
+
+  log-info "oc port-forward service/${_service_name} ${_local_port}:${_service_port}"
+    oc port-forward service/${_service_name} ${_local_port}:${_service_port}
+}
+
+port-forward-sources() {
+  port-forward sources-api-svc $SOURCES_FWD_PORT 8000
 }
 
 port-forward-koku() {
-    log-info "oc port-forward service/koku-clowder-api $KOKU_FWD_PORT:8000"
-    oc port-forward service/koku-clowder-api $KOKU_FWD_PORT:8000
+  port-forward koku-clowder-api $KOKU_FWD_PORT 8000
 }
 
 port-forward-masu() {
-    log-info "oc port-forward service/koku-clowder-masu $MASU_FWD_PORT:10000"
-    oc port-forward service/koku-clowder-masu $MASU_FWD_PORT:10000
+  port-forward koku-clowder-masu $MASU_FWD_PORT 8000
+}
+
+port-forward-ingress() {
+  port-forward ingress-service $INGRESS_FWD_PORT 8000
 }
 
 #
@@ -187,7 +198,8 @@ case ${CMD} in
    "pods")pods;;
    "port-forward-koku") port-forward-koku;;
    "port-forward-masu") port-forward-masu;;
-   "port-forward-services") port-forward-services;;
+   "port-forward-sources") port-forward-sources;;
+   "port-forward-ingress") port-forward-ingress;;
    "release") release $2;;
    "reserve") reserve $2;;
    *) usage;;
