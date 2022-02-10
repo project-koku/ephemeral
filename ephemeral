@@ -176,7 +176,7 @@ port-forward-koku() {
 }
 
 port-forward-masu() {
-  port-forward koku-clowder-masu $MASU_FWD_PORT 8000
+  port-forward koku-clowder-masu $MASU_FWD_PORT 10000
 }
 
 port-forward-ingress() {
