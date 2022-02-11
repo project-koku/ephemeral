@@ -25,8 +25,8 @@ usage() {
     log-info "\t pods                   list all pods in your namespace"
     log-info "\t port-forward-koku      forward local port<4000> to Koko svc"
     log-info "\t port-forward-masu      forward local port<5042> to Masu svc"
-    log-info "\t port-forward-sources  forward local port<3000> to Sources svc"
-    log-info "\t port-forward-ingress  forward local port<8000> to Ingress svc"
+    log-info "\t port-forward-sources   forward local port<3000> to Sources svc"
+    log-info "\t port-forward-ingress   forward local port<8000> to Ingress svc"
     log-info "\t release                release currently reserved(default), or specify the namespace to release"
     log-info "\t reserve <hours>        reserve an ephemeral namespace for specified time (example: 48h)"
 }
