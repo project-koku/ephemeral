@@ -16,9 +16,3 @@ CONFIG_FILE=${KOKU_HOME}/dev/config.yaml
 
 # image for Hive
 HIVE_IMAGE_TAG=3.1.2-metastore-005
-
-# local port(s) to forward
-SOURCES_FWD_PORT=3000
-KOKU_FWD_PORT=4000
-MASU_FWD_PORT=5042
-INGRESS_FWD_PORT=8000
