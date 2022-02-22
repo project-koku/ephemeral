@@ -16,6 +16,7 @@ SOURCES_FWD_PORT=3000
 KOKU_FWD_PORT=4000
 MASU_FWD_PORT=5042
 INGRESS_FWD_PORT=8000
+UNLEASH_FWD_PORT=4242
 
 usage() {
     log-info "Usage: `basename $0` <command> [command_arg]"
@@ -31,6 +32,7 @@ usage() {
     log-info "\t port-forward-masu <port>      forward local port to Masu svc (default: 5042)"
     log-info "\t port-forward-sources <port>   forward local port to Sources svc (default: 3000)"
     log-info "\t port-forward-ingress <port>   forward local port to Ingress svc (default: 8000)"
+    log-info "\t port-forward-unleash <port>   forward local port to Unleash svc (default: 4242)"
     log-info "\t release                       release currently reserved(default), or specify the namespace to release"
     log-info "\t reserve <hours>               reserve an ephemeral namespace for specified time (example: 48h)"
 }
@@ -191,6 +193,13 @@ port-forward-ingress() {
   port-forward ingress-service $_port 8000
 }
 
+port-forward-unleash() {
+  get-namespace
+  local _port=${1:-$UNLEASH_FWD_PORT}
+  local _svc_name="env-$NAMESPACE-featureflags"
+
+  port-forward $_svc_name $_port 4242
+}
 #
 # execute
 #
@@ -208,6 +217,7 @@ case ${1} in
    "port-forward-masu") port-forward-masu $2;;
    "port-forward-sources") port-forward-sources $2;;
    "port-forward-ingress") port-forward-ingress $2;;
+   "port-forward-unleash") port-forward-unleash $2;;
    "release") release $2;;
    "reserve") reserve $2;;
    *) usage;;
