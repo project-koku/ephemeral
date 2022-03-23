@@ -52,7 +52,7 @@ A wrapper to bonfire to run local repository on ephemeral cluster
     ```
    ephemeral list
    ```
-4. You can view the pods using oc command (at this point you will only see pods that ephemeral infrastructure setup)
+4. You can view the pods (you should see no resources yet)
     ```
    ephemeral pods
    ```
