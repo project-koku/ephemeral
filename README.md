@@ -52,7 +52,7 @@ A wrapper to bonfire to run local repository on ephemeral cluster
     ```
    ephemeral list
    ```
-4. You can view the pods (you should see no resources yet)
+4. You can view the pods (you should not see any resources at this point)
     ```
    ephemeral pods
    ```
