@@ -127,8 +127,8 @@ list() {
 }
 
 pods() {
-    log-info "oc get pods"
-    oc get pods
+    log-info "oc get pods -l app=koku"
+    oc get pods -l app=koku
 }
 
 build-image() {
@@ -200,6 +200,7 @@ port-forward-unleash() {
 
   port-forward $_svc_name $_port 4242
 }
+
 #
 # execute
 #
